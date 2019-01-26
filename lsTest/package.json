@@ -14,6 +14,9 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "element-ui": "^2.5.0",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
@@ -33,7 +36,7 @@
     "babel-preset-stage-2": "^6.22.0",
     "babel-register": "^6.22.0",
     "chalk": "^2.4.2",
-    "chromedriver": "^2.27.2",
+    "chromedriver": "^2.45.0",
     "copy-webpack-plugin": "^4.6.0",
     "cross-spawn": "^5.0.1",
     "css-loader": "^0.28.0",
