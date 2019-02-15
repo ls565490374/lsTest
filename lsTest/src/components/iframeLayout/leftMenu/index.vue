@@ -1,7 +1,7 @@
 <template>
   <div class="ls-left-menu">
-    <el-menu @select="selectFunc">
-      <el-submenu v-for="(o, index) in configData.leftMenuData" :index="o.index" :key="index">
+    <el-menu @select="selectFunc" :default-active="configData.leftMenuData.defaultActive">
+      <el-submenu v-for="(o, index) in configData.leftMenuData.data" :index="o.index" :key="index">
         <template slot="title">
           <span>{{o.name}}</span>
         </template>
@@ -10,7 +10,7 @@
             v-for="(o1,index1) in o.children"
             :index="o1.index"
             :key="index1"
-          >{{o1.name}}</el-menu-item>
+          ><i class="el-icon-loading"></i> {{o1.name}}</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
     </el-menu>
@@ -38,14 +38,13 @@ export default {
           }
         }
       }
-      deepSelectData(index, this.configData.leftMenuData);
-
-    //如果导航栏中存在该值 则不增加
+      deepSelectData(index, this.configData.leftMenuData.data);
+      //如果导航栏中存在该值 则不增加
       if (!this.configData.mainContentData.data.some(o => o.index == index)) {
         this.configData.mainContentData.data.push(selectData);
         this.configData.mainContentData.activeName = selectData.index;
-      }else{
-          this.configData.mainContentData.activeName = selectData.index;
+      } else {
+        this.configData.mainContentData.activeName = selectData.index;
       }
     },
     testFunc() {
@@ -57,4 +56,13 @@ export default {
 };
 </script>
 <style lang="less">
+.ls-left-menu{
+  .el-menu--inline{
+    .is-active{
+      background-color: #b79e45;
+      color: white;
+      font-weight: 1000;
+    }
+  }
+}
 </style>

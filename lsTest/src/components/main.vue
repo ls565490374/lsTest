@@ -32,7 +32,10 @@ export default {
     return {
       configData: {
         headerData: {},
-        leftMenuData: [],
+        leftMenuData: {
+          data:[],
+          defaultActive:''
+        },
         mainContentData: {
           activeName:'',
           data:[]
@@ -44,7 +47,7 @@ export default {
   created() {
     setInterval(() => {
       // this.configData.headerData = { a: 11, b: 22 };
-      this.configData.leftMenuData = data.leftMenu;
+      this.configData.leftMenuData.data = data.leftMenu;
       // this.configData.mainContentData = [1,2,3,4,56];
     }, 1000);
   }
