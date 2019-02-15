@@ -42,7 +42,7 @@
 			"children": [
 				{
 					"name": "我是app壹",
-					"url": "/#/appOne",
+					"url": "/a=1#/appOne",
 					"powerId": "123",
 					"children": [],
 					"index": "2-1",
@@ -50,7 +50,7 @@
 				},
 				{
 					"name": "我是app贰",
-					"url": "/#/appTwo",
+					"url": "/b=2#/appTwo",
 					"powerId": "123",
 					"children": [],
 					"index": "2-2",
@@ -58,7 +58,7 @@
 				},
 				{
 					"name": "我是app叁",
-					"url": "/#/appThree",
+					"url": "/c=3#/appThree",
 					"powerId": "123",
 					"children": [],
 					"index": "3-3",

@@ -3,13 +3,12 @@
     <el-header class="ls-header">header</el-header>
     <el-container>
       <el-aside class="ls-aside">
-        <el-menu @select="selectFunc">
+        <el-menu :default-active="defaultActive" @select="selectFunc">
           <template v-for="o in menuData.leftMenu">
             <el-submenu :index="o.url" :key="o.index">
               <template slot="title">{{o.name}}</template>
               <el-menu-item-group>
                 <el-menu-item
-                  :class="{activeClass: o1.isActive}"
                   @click="navMenuOpen(o1)"
                   :key="o1.index"
                   :index="o1.index"
@@ -32,13 +31,13 @@
             @tab-click="tabClickFunc"
           >
             <el-tab-pane v-for="o in topMenu" :label="o.name" :name="o.index" :key="o.index">
-              <!-- <iframe
+              <iframe
                 :src="o.url"
                 frameborder="none"
                 scrolling="auto"
                 style="width: 100%; height: 100%;"
-              ></iframe> -->
-							<span>{{o.url}}</span>
+              ></iframe>
+              <!-- <span>{{o.url}}</span> -->
             </el-tab-pane>
           </el-tabs>
         </el-main>
@@ -47,15 +46,15 @@
   </el-container>
 </template>
 <script>
-import sss from "./sss.vue";
 import data from "../assets/mockData/data.json";
+import { setTimeout } from "timers";
 export default {
   components: {
-    sss
   },
   data() {
     return {
       activeIndex: "",
+      defaultActive: "",
       menuData: {
         leftMenu: []
       },
@@ -67,19 +66,12 @@ export default {
   },
   watch: {
     activeIndex(index) {
-      function deepSet(arr) {
-        for (let o of arr) {
-          if (o.index == index) {
-						o.isActive = true;
-          } else {
-            o.isActive = false;
-            if (o.children[0]) {
-              deepSet(o.children);
-            }
-          }
+      for (let o of this.topMenu) {
+        if (o.index == index) {
+          this.defaultActive = o.index;
+          break;
         }
       }
-      deepSet(this.menuData.leftMenu);
     }
   },
   methods: {
@@ -98,7 +90,7 @@ export default {
       if (this.topMenu[temp - 1]) {
         this.activeIndex = this.topMenu[temp - 1].index;
       } else {
-				//已经splice了一下 所以这里的temp就不加1了
+        //已经splice了一下 所以这里的temp就不加1了
         if (this.topMenu[temp]) {
           this.activeIndex = this.topMenu[temp].index;
         } else {
@@ -123,7 +115,7 @@ export default {
         data.isActive = true;
         this.activeIndex = data.index;
       } else {
-				data.isActive = true;
+        data.isActive = true;
         this.topMenu.push(data);
         this.activeIndex = data.index;
       }
