@@ -45,7 +45,8 @@ export default {
     };
   },
   created() {
-    setInterval(() => {
+    
+    setTimeout(() => {
       // this.configData.headerData = { a: 11, b: 22 };
       this.configData.leftMenuData.data = data.leftMenu;
       // this.configData.mainContentData = [1,2,3,4,56];
@@ -59,17 +60,17 @@ export default {
   border: 2px dotted purple;
   .ls-header {
     color: red;
-    border: 1px solid red;
+    //border: 1px solid red;
   }
   .ls-aside {
     height: 100%;
     color: blue;
-    border: 1px solid blue;
+    //border: 1px solid blue;
   }
   .ls-main {
     height: 100%;
     color: teal;
-    border: 1px solid teal;
+    //border: 1px solid teal;
   }
 }
 </style>

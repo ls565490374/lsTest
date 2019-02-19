@@ -11,7 +11,7 @@
         v-for="o in configData.mainContentData.data"
         :label="o.name"
         :key="o.index"
-        :lazy = 'true'
+        :lazy="true"
       >
         <iframe :src="o.url" frameborder="none" scrolling="auto" style="width: 100%; height: 100%;"></iframe>
         <!-- <span>{{o.url}}</span> -->
@@ -70,6 +70,13 @@ export default {
   height: 100%;
   .el-tabs {
     height: 100%;
+      .el-tabs__item.is-active{
+        background-color: #b79e45 !important;
+        color: #fff;
+        font-weight: 1000;
+        border-top-left-radius:5px;
+        border-top-right-radius:5px;
+      }
     .el-tabs__content {
       height: calc(100% - 66px);
       .el-tab-pane {

@@ -1,11 +1,16 @@
 <template>
     <div>
-        11111
+        <button @click='testFunc'>aaa</button>
     </div>
 </template>
 <script>
+import vue from 'vue'
 export default {
-    
+    methods:{
+        testFunc(e){
+            this.$emit('click',e)
+        }
+    }
 }
 </script>
 <style lang='less'>
